@@ -1,0 +1,2 @@
+1. What should you create? Using what?
+An RSA key-pair should be created which includes a public and a private key. To create a 4096 bits RSA key-pair, the command ssh-keygen -t rsa -b 4096 should be used.

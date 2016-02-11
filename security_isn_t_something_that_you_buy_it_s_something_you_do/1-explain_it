@@ -1,0 +1,8 @@
+1. What should you create? Using what?
+An RSA key-pair should be created which includes a public and a private key. To create a 4096 bits RSA key-pair, the command ssh-keygen -t rsa -b 4096 should be used. -t option is used for the type of key and -b is used for mentioning the bits.
+
+2. What should you do with the public key? How will it be used? What will it do?
+As the name suggests the public key is for distribution, any system which wants to communicate with you securely should get this public key. This is the key that other systems can use to encrypt data to communicate with you securely, without the fear of any middle-man 'listening' in. The public key can only encrypt data and CANNOT decrypt it. Only the system which has the private key for it can ever decrypt the data encrypted using your public key.
+
+3. What should you do with the private key? How will it be used? What will it do?
+The private key should be kept securely hidden, away from any prying eyes; only for your use. The private key will be used to decrypt received data that is encrypted by other systems using your public key to communicate with you. Only the private key is able to deecrypt it.
