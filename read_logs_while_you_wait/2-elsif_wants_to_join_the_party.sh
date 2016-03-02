@@ -1,7 +1,6 @@
 #!/bin/bash
 get=0
 head=0
-
 while IFS='' read -r line || [ -n "$line" ]
 do
     if [ $(echo $line | grep -o HEAD) ]
@@ -12,6 +11,5 @@ do
 	get=$((get+1))
     fi
 done < "$1"
-
 echo $head
 echo $get
