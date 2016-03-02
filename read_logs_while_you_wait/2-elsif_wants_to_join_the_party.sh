@@ -1,8 +1,8 @@
 #!/bin/bash
 get=0
 head=0
-IFS=''
-while read -r line #|| [ -n "$line" ]
+
+while IFS='' read -r line || [ -n "$line" ]
 do
     if [ $(echo $line | grep -o HEAD) ]
     then
