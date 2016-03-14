@@ -1,0 +1,5 @@
+#!/bin/bash
+z="m%$(($(tput cols)/3))s"
+for i in $(seq $(tput lines))
+do printf "\e[42$z\e[47$z\e[41$z\e[0m\n"
+done

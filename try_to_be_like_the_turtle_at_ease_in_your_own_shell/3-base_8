@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "obase=8; ibase=8; $NUM1+$NUM2" | bc
+
