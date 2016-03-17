@@ -1,2 +1,2 @@
 #!/usr/bin/ruby
-puts File.file?(ARGV[0])
+puts File.exist?(ARGV[0])
