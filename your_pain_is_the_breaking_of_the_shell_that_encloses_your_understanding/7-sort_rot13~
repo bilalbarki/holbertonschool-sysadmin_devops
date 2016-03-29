@@ -1,2 +1,0 @@
-#!/bin/bash
-cat /etc/passwd | grep -o ^[^:]* | tr '[A-Za-z]' '[N-ZA-Mn-za-m]' | sort | tr '[A-Za-z]' '[N-ZA-Mn-za-m]'
