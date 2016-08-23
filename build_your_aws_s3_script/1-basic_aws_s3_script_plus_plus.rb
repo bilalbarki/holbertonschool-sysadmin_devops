@@ -78,7 +78,6 @@ elsif options[:action] == :upload then
 elsif options[:action] == :delete then
 	raise OptionParser::MissingArgument, "Error: bucketname is required" if options[:bucketname].nil?
 	raise OptionParser::MissingArgument, "Error: bucketname is required" if options[:filepath].nil?
-	#name = File.basename options[:filepath]
 	resp = client.delete_object({
   		bucket: options[:bucketname], # required
   		key: options[:filepath], # required

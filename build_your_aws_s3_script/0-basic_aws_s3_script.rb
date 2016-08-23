@@ -15,12 +15,12 @@ OptionParser.new do |opts|
 		options[:verbose] = v
 	end
 
-	# for server id
+	# for bucket name
 	opts.on('-b', '--bucketname [BUCKET_NAME]', 'Name of the bucket to perform the action on') do |s|
 		options[:bucketname] = s
 	end
 
-	#to input name
+	# for file path
 	opts.on('-f', '--filepath [FILE_PATH]', 'Path to the file to upload') do |n|
 		options[:filepath] = n
 	end
@@ -50,21 +50,11 @@ client = Aws::S3::Client.new({
 
 if options[:action] == :list then
 	raise OptionParser::MissingArgument, "Error: bucketname is required" if options[:bucketname].nil?
-	# bucket = client.buckets(options[:bucketname])
-	# data_files = bucket.objects(prefix: 'prefix/', delimiter: 'delimiter')
-	# print data_files
 	resp = client.list_objects({
-  bucket: options[:bucketname], # required
-  # delimiter: nil,
-  # encoding_type: nil, # accepts url
-  # marker: nil,
-  # #max_keys: 1,
-  # prefix: nil,
-})
-	# print resp.contents
+  		bucket: options[:bucketname], # required
+	})
 	resp.contents.each do |items|
 		puts "#{items['key']} => #{items['etag']}"
-		#puts items['key'] + " => " + items['etag']
 	end
 
 elsif options[:action] == :upload then
@@ -81,7 +71,6 @@ elsif options[:action] == :upload then
 elsif options[:action] == :delete then
 	raise OptionParser::MissingArgument, "Error: bucketname is required" if options[:bucketname].nil?
 	raise OptionParser::MissingArgument, "Error: bucketname is required" if options[:filepath].nil?
-	#name = File.basename options[:filepath]
 	resp = client.delete_object({
   		bucket: options[:bucketname], # required
   		key: options[:filepath], # required
