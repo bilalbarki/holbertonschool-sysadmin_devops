@@ -43,7 +43,7 @@ end
 config = YAML.load_file('config.yaml')
 
 client = Aws::S3::Client.new({
-		region: 'us-west-2',
+		region: config['region'],
 		access_key_id: config['access_key_id'],
 		secret_access_key: config['secret_access_key']
 	})
@@ -55,7 +55,6 @@ if options[:action] == :list then
 		})
 		resp.contents.each do |items|
 			puts "#{items['key']} => #{items['etag']}"
-			puts items['size']
 		end
 	else
 		resp = client.list_buckets()
